@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+
+)
+
+func Ssort(arr []int,l,r int) []int{
+	if l >= r {
+		return arr
+	} else {
+		p := partition(arr, l, r)
+		Ssort(arr, l, p - 1)
+		Ssort(arr, p + 1, r)
+	}
+	return nil
+}
+func partition(arr []int, l, r int) int {
+	p := 1
+	for i := l + 1; i <= r ; i ++ {
+		if arr[i] < arr[l] {
+			arr[i], arr[p] = arr[p], arr[i]
+			p++
+			continue
+		}
+	}
+	arr[l], arr[p] = arr[p], arr[l]
+	break
+}
+func main() {
+	a := []int{}
+	a = []int{8,15,6,3,5,1,4,2,18,7}
+	//a = []int{}
+
+
+
+	//len1 := len(a)
+
+	fmt.Println(Ssort(a,0, len(a) - 1))
+}
