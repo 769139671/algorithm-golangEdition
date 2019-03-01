@@ -1,0 +1,39 @@
+package main
+
+import "fmt"
+func mergeSort(arr []int)  []int{
+	if len(arr) < 2 {
+	    //fmt.Println(arr)
+	    return arr
+	}
+	i := len(arr) / 2
+	left := mergeSort(arr[0:i])
+	
+	fmt.Println("left is:",left)
+	right := mergeSort(arr[i:])
+	fmt.Println("right is:",right)
+	result := merge(left, right)
+	return result
+}
+func merge(l,r []int) (re []int) {
+    /*
+    fmt.Println("l is :")
+    fmt.Println(l)
+    fmt.Println("r is :")
+    fmt.Println(r)
+    */
+    res := []int{}
+    
+    res = append(res,l[:]...)
+    res = append(res, r[:]...)
+    fmt.Println("merge is :",res)
+    
+    return res
+}
+
+func main() {
+    //a := []int{4,6,1}
+    b := []int{3,9,7,2}
+    c := mergeSort(b)
+    fmt.Println(c)
+}
